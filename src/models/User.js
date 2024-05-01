@@ -1,10 +1,23 @@
 import mongoose from 'mongoose'
+import { randomUUID } from 'crypto'
 
 const UserSchema = new mongoose.Schema({
-  name: String,
+  uid: {
+    type: 'UUID',
+    default: () => randomUUID(),
+  },
+  name: {
+    type: String,
+    required: [true, 'Please add a name'],
+  },
   email: {
     type: String,
-    required: true,
+    required: [true, 'Please add a email'],
+    unique: true,
+    match: [
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      'Please add a valid email',
+    ],
   },
   picture: String,
   bio: String,
@@ -13,7 +26,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: 'off',
   },
-  created_at: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },
