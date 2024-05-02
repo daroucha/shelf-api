@@ -13,6 +13,7 @@ const PublicTitleSchema = new mongoose.Schema({
     type: String,
     enum: ['movie', 'collection'],
   },
+  cover: String,
   box: {
     type: String,
     enum: [

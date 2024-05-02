@@ -19,6 +19,7 @@ const CoverSchema = new mongoose.Schema({
     type: String,
     enum: ['cover', 'banner'],
   },
+  properties: Array,
   createdAt: {
     type: Date,
     default: Date.now,

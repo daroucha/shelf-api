@@ -19,12 +19,22 @@ const TitleSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.UUID,
     ref: 'Cover',
   },
+  pictures: Array,
   owner: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
     required: true,
   },
   comments: String,
+  status: {
+    type: String,
+    enum: ['draft', 'published'],
+    default: 'draft',
+  },
+  savedAt: {
+    type: Date,
+    default: Date.now,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
