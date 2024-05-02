@@ -5,6 +5,7 @@ const TitleSchema = new mongoose.Schema({
   uid: {
     type: 'UUID',
     default: () => randomUUID(),
+    unique: true,
   },
   title: {
     type: mongoose.Schema.ObjectId,

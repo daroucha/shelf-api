@@ -9,6 +9,8 @@ import mongoSanitize from 'express-mongo-sanitize'
 import morgan from 'morgan'
 import rateLimit from 'express-rate-limit'
 import xss from 'xss-clean'
+import errorHandler from './middleware/error.middleware.js'
+import UserRoutes from './routes/user.routes.js'
 
 // Load ENV Vars
 dotenv.config({
@@ -52,5 +54,9 @@ app.use(hpp())
 app.use(cors())
 
 // Mount routes
+app.use('/api/v1/users', UserRoutes)
+
+// Error handler middleware
+app.use(errorHandler)
 
 export default app

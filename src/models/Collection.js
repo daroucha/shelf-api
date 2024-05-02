@@ -5,6 +5,7 @@ const CollectionSchema = new mongoose.Schema({
   uid: {
     type: 'UUID',
     default: () => randomUUID(),
+    unique: true,
   },
   owner: {
     type: mongoose.Schema.Types.UUID,

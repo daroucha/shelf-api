@@ -5,6 +5,12 @@ const UserSchema = new mongoose.Schema({
   uid: {
     type: 'UUID',
     default: () => randomUUID(),
+    unique: true,
+  },
+  firebaseUid: {
+    type: String,
+    required: true,
+    unique: true,
   },
   name: {
     type: String,
