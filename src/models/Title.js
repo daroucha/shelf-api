@@ -26,6 +26,11 @@ const TitleSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  collection: {
+    type: mongoose.Schema.Types.UUID,
+    ref: 'Collection',
+    required: true,
+  },
   comments: String,
   status: {
     type: String,
