@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import { randomUUID } from 'crypto'
 
 const DiscSchema = new mongoose.Schema({
   title: {
@@ -11,6 +10,11 @@ const DiscSchema = new mongoose.Schema({
     type: String,
     enum: ['bd', 'dvd'],
   },
+  contentType: {
+    type: String,
+    enum: ['movie', 'extra'],
+  },
+  externalId: String,
   video: {
     resolution: String,
     aspect: String,
@@ -20,6 +24,10 @@ const DiscSchema = new mongoose.Schema({
   audio: Array,
   subtitles: Array,
   extras: Array,
+  status: {
+    type: String,
+    enum: ['draft', 'publish'],
+  },
   createdAt: {
     type: Date,
     default: Date.now,

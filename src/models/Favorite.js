@@ -7,7 +7,7 @@ const FavoriteSchema = new mongoose.Schema({
     required: true,
   },
   title: {
-    type: mongoose.Schema.Types.UUID,
+    type: mongoose.Schema.ObjectId,
     ref: 'Title',
     required: true,
   },

@@ -11,7 +11,7 @@ const RelationshipSchema = new mongoose.Schema({
     ref: 'User',
   },
   targetTitle: {
-    type: mongoose.Schema.Types.UUID,
+    type: mongoose.Schema.ObjectId,
     ref: 'Title',
   },
   type: {

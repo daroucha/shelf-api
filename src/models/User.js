@@ -1,12 +1,6 @@
-import mongoose from 'mongoose'
-import { randomUUID } from 'crypto'
+import mongoose, { Schema } from 'mongoose'
 
-const UserSchema = new mongoose.Schema({
-  uid: {
-    type: 'UUID',
-    default: () => randomUUID(),
-    unique: true,
-  },
+const UserSchema = new Schema({
   firebaseUid: {
     type: String,
     required: true,
@@ -28,9 +22,14 @@ const UserSchema = new mongoose.Schema({
   picture: String,
   bio: String,
   location: String,
+  userCollection: {
+    type: Schema.Types.ObjectId,
+    ref: 'UserCollection',
+  },
   status: {
     type: String,
     default: 'off',
+    enum: ['off', 'on'],
   },
   createdAt: {
     type: Date,

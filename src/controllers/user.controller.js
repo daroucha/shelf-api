@@ -1,5 +1,6 @@
 import User from '../models/User.js'
 import asyncHandler from '../middleware/async.middleware.js'
+import UserCollection from '../models/UserCollection.js'
 
 // @desc    Register a user
 // @route   POST /api/v1/users
@@ -15,6 +16,23 @@ export const registerUser = asyncHandler(async (req, res, next) => {
     picture,
     status,
   })
+
+  // Create a collection for the User
+  const userCollection = await new UserCollection({
+    owner: user,
+    public: false,
+    name: 'My Collection',
+  })
+
+  // Save collection inside User
+  await User.findOneAndUpdate(
+    { firebaseUid },
+    { userCollection },
+    { new: true },
+  )
+
+  // Save User Collection
+  await userCollection.save()
 
   res.status(201).json({
     success: true,

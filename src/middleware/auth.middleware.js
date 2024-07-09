@@ -1,6 +1,6 @@
+import admin from '../config/firebase.js'
 import asyncHandler from './async.middleware.js'
 import ErrorResponse from '../utils/errorResponse.js'
-import { admin } from '../config/firebase.js'
 
 export const protect = asyncHandler(async (req, res, next) => {
   let token
@@ -20,7 +20,9 @@ export const protect = asyncHandler(async (req, res, next) => {
 
   try {
     // Verify token
-    const decoded = admin.auth().verifyIdToken(token)
+    const decoded = await admin.auth().verifyIdToken(token)
+
+    req.user = decoded
 
     next()
   } catch (err) {

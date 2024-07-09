@@ -11,6 +11,8 @@ import rateLimit from 'express-rate-limit'
 import xss from 'xss-clean'
 import errorHandler from './middleware/error.middleware.js'
 import UserRoutes from './routes/user.routes.js'
+import AuthRoutes from './routes/auth.routes.js'
+import TitleRoutes from './routes/title.routes.js'
 
 // Load ENV Vars
 dotenv.config({
@@ -55,6 +57,8 @@ app.use(cors())
 
 // Mount routes
 app.use('/api/v1/users', UserRoutes)
+app.use('/api/v1/auth', AuthRoutes)
+app.use('/api/v1/titles', TitleRoutes)
 
 // Error handler middleware
 app.use(errorHandler)

@@ -1,23 +1,18 @@
 import mongoose from 'mongoose'
-import { randomUUID } from 'crypto'
 
 const TitleSchema = new mongoose.Schema({
-  uid: {
-    type: 'UUID',
-    default: () => randomUUID(),
-    unique: true,
-  },
   title: {
     type: mongoose.Schema.ObjectId,
     ref: 'PublicTitle',
     required: true,
+    unique: true,
   },
   cover: {
-    type: mongoose.Schema.Types.UUID,
+    type: mongoose.Schema.ObjectId,
     ref: 'Cover',
   },
   banner: {
-    type: mongoose.Schema.Types.UUID,
+    type: mongoose.Schema.ObjectId,
     ref: 'Cover',
   },
   pictures: Array,
@@ -26,9 +21,9 @@ const TitleSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
-  collection: {
-    type: mongoose.Schema.Types.UUID,
-    ref: 'Collection',
+  userCollection: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'UserCollection',
     required: true,
   },
   comments: String,

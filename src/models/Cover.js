@@ -1,18 +1,12 @@
 import mongoose from 'mongoose'
-import { randomUUID } from 'crypto'
 
 const CoverSchema = new mongoose.Schema({
-  uid: {
-    type: 'UUID',
-    default: () => randomUUID(),
-    unique: true,
-  },
   owner: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
   },
   title: {
-    type: mongoose.Schema.Types.UUID,
+    type: mongoose.Schema.ObjectId,
     ref: 'Title',
   },
   image: String,
