@@ -13,6 +13,7 @@ import errorHandler from './middleware/error.middleware.js'
 import UserRoutes from './routes/user.routes.js'
 import AuthRoutes from './routes/auth.routes.js'
 import TitleRoutes from './routes/title.routes.js'
+import DiscRoutes from './routes/disc.routes.js'
 
 // Load ENV Vars
 dotenv.config({
@@ -59,6 +60,7 @@ app.use(cors())
 app.use('/api/v1/users', UserRoutes)
 app.use('/api/v1/auth', AuthRoutes)
 app.use('/api/v1/titles', TitleRoutes)
+app.use('/api/v1/discs', DiscRoutes)
 
 // Error handler middleware
 app.use(errorHandler)

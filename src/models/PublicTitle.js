@@ -26,10 +26,12 @@ const PublicTitleSchema = new mongoose.Schema({
       'elite',
     ],
   },
-  discs: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Disc',
-  },
+  discs: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Disc',
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
